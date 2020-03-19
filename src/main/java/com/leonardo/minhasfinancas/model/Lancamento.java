@@ -17,8 +17,14 @@ import javax.persistence.Table;
 
 import org.springframework.data.convert.Jsr310Converters;
 
+import com.leonardo.minhasfinancas.enums.StatusLancamento;
+import com.leonardo.minhasfinancas.enums.TipoLancamento;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +32,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @ToString
 @Table(name = "lancamento", schema = "financas")
 public class Lancamento {

@@ -1,4 +1,4 @@
-package com.leonardo.minhasfinancas.model;
+package com.leonardo.minhasfinancas.enums;
 
 public enum TipoLancamento {
     RECEITA, DESPESA

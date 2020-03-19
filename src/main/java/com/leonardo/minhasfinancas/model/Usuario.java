@@ -9,13 +9,17 @@ import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @EqualsAndHashCode
-@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "usuario", schema = "financas")
 public class Usuario {
 
