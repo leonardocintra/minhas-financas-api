@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +33,12 @@ public class Lancamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Integer mes;
+    
     private Integer ano;
+
+    private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
@@ -44,4 +50,9 @@ public class Lancamento {
     @Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
     private LocalDate dataCadastro;
 
+    @Enumerated(value = EnumType.STRING)
+    private TipoLancamento tipo;
+
+    @Enumerated(value = EnumType.STRING)
+    private StatusLancamento status;
 }
