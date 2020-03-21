@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.data.convert.Jsr310Converters;
 
 import com.leonardo.minhasfinancas.enums.StatusLancamento;
 import com.leonardo.minhasfinancas.enums.TipoLancamento;
@@ -56,7 +53,7 @@ public class Lancamento {
     private BigDecimal valor;
 
     @Column(name = "data_cadastro")
-    @Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
+    // @Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
     private LocalDate dataCadastro;
 
     @Enumerated(value = EnumType.STRING)
