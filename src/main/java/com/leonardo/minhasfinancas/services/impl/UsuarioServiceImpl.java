@@ -14,39 +14,40 @@ import com.leonardo.minhasfinancas.services.UsuarioService;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-    private UsuarioRepository usuarioRepository;
-        public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
-        super();
-        this.usuarioRepository = usuarioRepository;
-    }
+	private UsuarioRepository usuarioRepository;
 
-    @Override
-    public Usuario autenticaUsuario(final String email, final String senha) {
-        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
-        
-        if (usuario.isEmpty()) {
-        	throw new ErroAutenticacaoException("Usuário não encontrado pelo email informado");
-        }
-        
-        if (usuario.map(u -> u.getSenha()).map(s -> s.equals(email)).orElse(false)) {
-        	throw new ErroAutenticacaoException("Senha invalida");        	
-        }
-        
-        return usuario.get();
-    }
+	public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
+		super();
+		this.usuarioRepository = usuarioRepository;
+	}
 
-    @Override
-    @Transactional
-    public Usuario salvaUsuario(final Usuario usuario) {
-        validarEmail(usuario.getEmail());        
-        return usuarioRepository.save(usuario);
-    }
+	@Override
+	public Usuario autenticaUsuario(final String email, final String senha) {
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 
-    @Override
-    public void validarEmail(final String email) {
-        if (usuarioRepository.existsByEmail(email)) {
-            throw new RegraNegocioException("Ja existe um usuário com este email.");
-        }
-    }
+		if (usuario.isEmpty()) {
+			throw new ErroAutenticacaoException("Usuário não encontrado pelo email informado");
+		}
+
+		if (usuario.map(u -> u.getSenha()).map(s -> s.equals(email)).orElse(false)) {
+			throw new ErroAutenticacaoException("Senha invalida");
+		}
+
+		return usuario.get();
+	}
+
+	@Override
+	@Transactional
+	public Usuario salvaUsuario(final Usuario usuario) {
+		validarEmail(usuario.getEmail());
+		return usuarioRepository.save(usuario);
+	}
+
+	@Override
+	public void validarEmail(final String email) {
+		if (usuarioRepository.existsByEmail(email)) {
+			throw new RegraNegocioException("Ja existe um usuário com este email.");
+		}
+	}
 
 }
