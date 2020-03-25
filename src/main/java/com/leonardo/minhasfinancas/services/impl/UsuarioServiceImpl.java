@@ -24,7 +24,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario autenticaUsuario(final String email, final String senha) {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
-		
+
 		if (usuario.isEmpty()) {
 			throw new ErroAutenticacaoException("Usuário não encontrado pelo email informado");
 		} else {
@@ -50,4 +50,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 	}
 
+	@Override
+	public Optional<Usuario> obterPorId(final Long id) {
+		return usuarioRepository.findById(id);
+	}
 }

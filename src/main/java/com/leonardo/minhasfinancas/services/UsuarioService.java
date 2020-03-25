@@ -1,5 +1,7 @@
 package com.leonardo.minhasfinancas.services;
 
+import java.util.Optional;
+
 import com.leonardo.minhasfinancas.model.Usuario;
 
 public interface UsuarioService {
@@ -9,4 +11,6 @@ public interface UsuarioService {
     Usuario salvaUsuario(Usuario usuario);
 
     void validarEmail(String email);
+    
+    Optional<Usuario> obterPorId(Long id);
 }
