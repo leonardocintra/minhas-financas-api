@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leonardo.minhasfinancas.enums.StatusLancamento;
@@ -16,6 +17,7 @@ import com.leonardo.minhasfinancas.model.Lancamento;
 import com.leonardo.minhasfinancas.repository.LancamentoRepository;
 import com.leonardo.minhasfinancas.services.LancamentoService;
 
+@Service
 public class LancamentoSeriviceImpl implements LancamentoService {
 
 	private LancamentoRepository lancamentoRepository;
@@ -91,7 +93,7 @@ public class LancamentoSeriviceImpl implements LancamentoService {
 	}
 
 	@Override
-	public Optional<Lancamento> buscarPorId(Long id) {
+	public Optional<Lancamento> buscarPorId(final Long id) {
 		return lancamentoRepository.findById(id);
 	}
 

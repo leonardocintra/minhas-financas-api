@@ -1,7 +1,7 @@
 package com.leonardo.minhasfinancas.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.leonardo.minhasfinancas.enums.StatusLancamento;
@@ -53,12 +54,17 @@ public class Lancamento {
     private BigDecimal valor;
 
     @Column(name = "data_cadastro")
-    // @Convert(converter = Jsr310Converters.LocalDateTimeToDateConverter.class)
-    private LocalDate dataCadastro;
+    private ZonedDateTime dataCadastro;
 
     @Enumerated(value = EnumType.STRING)
     private TipoLancamento tipo;
 
     @Enumerated(value = EnumType.STRING)
     private StatusLancamento status;
+    
+    @PrePersist
+    protected void prePersist() {
+    	dataCadastro = ZonedDateTime.now();
+    }
+
 }

@@ -13,15 +13,14 @@ import com.leonardo.minhasfinancas.exceptions.RegraNegocioException;
 import com.leonardo.minhasfinancas.model.Usuario;
 import com.leonardo.minhasfinancas.services.UsuarioService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/usuarios")
 public class UsuarioResource {
 
-	private UsuarioService usuarioService;
-
-	private UsuarioResource(UsuarioService usuarioService) {
-		this.usuarioService = usuarioService;
-	}
+	private final UsuarioService usuarioService;
 
 	@PostMapping("/autenticar")
 	public ResponseEntity autenticar(@RequestBody UsuarioDto dto) {
