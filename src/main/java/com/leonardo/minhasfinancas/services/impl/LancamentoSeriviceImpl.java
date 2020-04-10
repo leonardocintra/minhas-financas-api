@@ -85,7 +85,7 @@ public class LancamentoSeriviceImpl implements LancamentoService {
 		}
 		
 		if (lancamento.getValor() == null || lancamento.getValor().compareTo(BigDecimal.ZERO) < 1 ) {
-			throw new RegraNegocioException("Inform um valor maior ou igual a 1");
+			throw new RegraNegocioException("Informe um valor maior ou igual a 1");
 		}
 		
 		if (lancamento.getTipo() == null) {
