@@ -16,10 +16,10 @@ import com.leonardo.minhasfinancas.model.Usuario;
 import com.leonardo.minhasfinancas.services.LancamentoService;
 import com.leonardo.minhasfinancas.services.UsuarioService;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping("/api/usuarios")
 public class UsuarioResource {
 

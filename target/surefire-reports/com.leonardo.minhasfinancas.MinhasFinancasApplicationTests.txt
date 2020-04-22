@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.leonardo.minhasfinancas.MinhasFinancasApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.63 s - in com.leonardo.minhasfinancas.MinhasFinancasApplicationTests

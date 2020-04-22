@@ -1,0 +1,6 @@
+com/leonardo/minhasfinancas/services/LancamentoServiceTest.class
+com/leonardo/minhasfinancas/repository/LancamentoRepositoryTest.class
+com/leonardo/minhasfinancas/MinhasFinancasApplicationTests.class
+com/leonardo/minhasfinancas/services/UsuarioServiceTest.class
+com/leonardo/minhasfinancas/repository/UsuarioRepositoryTest.class
+com/leonardo/minhasfinancas/api/resource/UsuarioResourceTest.class

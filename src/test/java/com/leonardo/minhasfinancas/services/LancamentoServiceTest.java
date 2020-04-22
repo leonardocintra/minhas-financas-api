@@ -161,6 +161,16 @@ public class LancamentoServiceTest {
 	}
 
 	@Test
+	public void deveLancarErroBuscarSaldoPorUsuario() {
+		Mockito.when(
+				lancamentoRepository.obterSaldoPorTipoLancamentoEUsuario(Mockito.anyLong(), Mockito.any()))
+				.thenReturn(BigDecimal.valueOf(3000));
+		
+		var resultado = lancamentoService.obterSaldoPorUsuario(10L);
+		Assertions.assertThat(resultado).isEqualTo(BigDecimal.ZERO);
+	}
+
+	@Test
 	public void deveLancarErroAoValidarUmLancamento() {
 		var lancamento = new Lancamento();
 
@@ -194,8 +204,7 @@ public class LancamentoServiceTest {
 
 		Assertions.assertThat(Assertions.catchThrowable(() -> lancamentoService.validar(lancamento)))
 				.isInstanceOf(RegraNegocioException.class).hasMessage("Informe um usuário");
-		lancamento.setUsuario(
-				Usuario.builder().nome("Leonardo Semid").email("leonardo.ncintra@outlook.com").build());
+		lancamento.setUsuario(Usuario.builder().nome("Leonardo Semid").email("leonardo.ncintra@outlook.com").build());
 
 		Assertions.assertThat(Assertions.catchThrowable(() -> lancamentoService.validar(lancamento)))
 				.isInstanceOf(RegraNegocioException.class).hasMessage("Informe um usuário");
@@ -212,6 +221,9 @@ public class LancamentoServiceTest {
 
 		Assertions.assertThat(Assertions.catchThrowable(() -> lancamentoService.validar(lancamento)))
 				.isInstanceOf(RegraNegocioException.class).hasMessage("Informe um tipo de lançamento.");
+		lancamento.setTipo(TipoLancamento.RECEITA);
+		
+		lancamentoService.validar(lancamento);
 	}
 
 	private Lancamento criarLancamentoDespesaPendente() {

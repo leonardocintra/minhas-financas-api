@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.leonardo.minhasfinancas.api.resource.UsuarioResourceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.555 s <<< FAILURE! - in com.leonardo.minhasfinancas.api.resource.UsuarioResourceTest
+deveRetornarBadRequestAoObterErroDeAutenticacao  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usuarioResource' defined in file [/home/leo/Github/minhas-financas-api/target/classes/com/leonardo/minhasfinancas/api/resource/UsuarioResource.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+
+deveAutenticarUsuario  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usuarioResource' defined in file [/home/leo/Github/minhas-financas-api/target/classes/com/leonardo/minhasfinancas/api/resource/UsuarioResource.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+
+deveCriarUmNovoUsuario  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'usuarioResource' defined in file [/home/leo/Github/minhas-financas-api/target/classes/com/leonardo/minhasfinancas/api/resource/UsuarioResource.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.leonardo.minhasfinancas.services.LancamentoService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+
