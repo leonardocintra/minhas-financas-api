@@ -65,16 +65,17 @@ public class LancamentoResource {
 	public ResponseEntity atualizarStatus(@PathVariable("id") Long id, @RequestBody AtualizaStatusDto dto) {
 		return lancamentoService.buscarPorId(id).map(lancamento -> {
 			StatusLancamento statusSelecionado = StatusLancamento.valueOf(dto.getStatus());
-			
+
 			if (statusSelecionado == null) {
-				return ResponseEntity.badRequest().body("Não foi possivel atualizar o status do lançamento. Envie o status valido");
+				return ResponseEntity.badRequest()
+						.body("Não foi possivel atualizar o status do lançamento. Envie o status valido");
 			}
-			
+
 			try {
 				lancamento.setStatus(statusSelecionado);
 				lancamentoService.atualizar(lancamento);
-				return ResponseEntity.ok(lancamento);				
-			}catch (RegraNegocioException e) {
+				return ResponseEntity.ok(lancamento);
+			} catch (RegraNegocioException e) {
 				return ResponseEntity.badRequest().body(e.getMessage());
 			}
 		}).orElseGet(() -> new ResponseEntity("Lancamento não encontrado na base de dados", HttpStatus.BAD_REQUEST));
@@ -86,6 +87,13 @@ public class LancamentoResource {
 			lancamentoService.deletar(lancamento);
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}).orElseGet(() -> new ResponseEntity("Lancamento não encontrado na base de dados", HttpStatus.BAD_REQUEST));
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity obterLancamento(@PathVariable("id") Long id) {
+		return lancamentoService.buscarPorId(id)
+				.map(lancamento -> new ResponseEntity(converter(lancamento), HttpStatus.OK))
+				.orElseGet(() -> new ResponseEntity(HttpStatus.NOT_FOUND));
 	}
 
 	@GetMapping
@@ -106,6 +114,13 @@ public class LancamentoResource {
 		}
 
 		return ResponseEntity.ok(lancamentoService.buscar(lancamentoFiltro));
+	}
+
+	private LancamentoDto converter(Lancamento lancamento) {
+		return LancamentoDto.builder().id(lancamento.getId()).descricao(lancamento.getDescricao())
+				.valor(lancamento.getValor()).mes(lancamento.getMes()).ano(lancamento.getAno())
+				.status(lancamento.getStatus().name()).tipo(lancamento.getTipo().name())
+				.usuario(lancamento.getUsuario().getId()).build();
 	}
 
 	private Lancamento converter(LancamentoDto dto) {
