@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.leonardo.minhasfinancas.services.UsuarioServiceTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.573 s - in com.leonardo.minhasfinancas.services.UsuarioServiceTest
